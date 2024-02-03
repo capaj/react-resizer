@@ -49,7 +49,7 @@ function App() {
 
         {/* Github link */}
         <br />
-        <a href="https://github.com/capaj/react-resizer">Github</a>
+        <a href="https://github.com/capaj/react-resizer">Github repo</a>
       </main>
     </>
   )

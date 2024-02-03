@@ -1,6 +1,8 @@
 # react-resizer
 
-a simple react component which allows user to resize the component container in two direction
+a simple react component which allows user to resize the component container in two direction.
+
+⚠️ distribution on npm only has ESM version of the package. If you need CJS version you cannot use this.
 
 ## Installation
 

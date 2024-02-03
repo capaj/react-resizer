@@ -29,7 +29,13 @@ function App() {
           </div>
         </Resizer>
 
-        <Resizer>
+        <Resizer
+          handleStyles={{
+            diagonal: {
+              backgroundColor: "lightgreen",
+            },
+          }}
+        >
           <div
             style={{
               backgroundColor: "yellow",

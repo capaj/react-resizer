@@ -4,12 +4,18 @@ export interface ResizerProps {
   children: React.ReactNode
   style?: React.CSSProperties
   defaultSize?: { width: number; height: number }
+  handleStyles?: {
+    horizontal?: React.CSSProperties
+    vertical?: React.CSSProperties
+    diagonal?: React.CSSProperties
+  }
 }
 
 export const Resizer: React.FC<ResizerProps> = ({
   children,
   style,
   defaultSize,
+  handleStyles,
 }) => {
   const [size, setSize] = useState(defaultSize ?? { width: 200, height: 200 })
 
@@ -68,6 +74,12 @@ export const Resizer: React.FC<ResizerProps> = ({
     [startResizing]
   )
 
+  const commonHandleStyle = {
+    position: "absolute",
+    backgroundColor: "grey",
+    color: "white",
+  } as React.CSSProperties
+
   return (
     <div
       className="resizer"
@@ -94,20 +106,16 @@ export const Resizer: React.FC<ResizerProps> = ({
         className="resizer horizontal handle"
         onMouseDown={startHorizontalResizing}
         style={{
-          position: "absolute",
           top: "50%",
           right: -10,
           transform: "translateY(-50%)",
           textAlign: "center",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
           width: "20px",
           lineHeight: "10px",
           height: "14px",
           cursor: "ew-resize",
-          backgroundColor: "grey",
-          color: "white",
+          ...commonHandleStyle,
+          ...handleStyles?.horizontal,
         }}
       >
         ↔️ {/* Horizontal resize handle */}
@@ -118,7 +126,6 @@ export const Resizer: React.FC<ResizerProps> = ({
         className="resizer vertical handle"
         onMouseDown={startVerticalResizing}
         style={{
-          position: "absolute",
           left: "50%",
           bottom: -10,
           transform: "translateX(-50%)",
@@ -126,8 +133,8 @@ export const Resizer: React.FC<ResizerProps> = ({
           lineHeight: "18px",
           height: "20px",
           cursor: "ns-resize",
-          backgroundColor: "grey",
-          color: "white",
+          ...commonHandleStyle,
+          ...handleStyles?.vertical,
         }}
       >
         {" "}
@@ -139,7 +146,6 @@ export const Resizer: React.FC<ResizerProps> = ({
         className="resizer diagonal handle"
         onMouseDown={startDiagonalResizing}
         style={{
-          position: "absolute",
           bottom: -10,
           right: -10,
           width: "20px",
@@ -148,8 +154,8 @@ export const Resizer: React.FC<ResizerProps> = ({
           transform: "rotate(90deg)",
           height: "20px",
           cursor: "nwse-resize",
-          backgroundColor: "grey",
-          color: "white",
+          ...commonHandleStyle,
+          ...handleStyles?.diagonal,
         }}
       >
         ↗️ {/* Diagonal resize handle */}

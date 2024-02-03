@@ -31,7 +31,7 @@ jobs:
 
       - name: Build
         if: github.ref == 'refs/heads/main'
-        run: pnpm run buildPages
+        run: pnpm build && pnpm run buildPages
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     outDir: "pages",
   },
+  base: "/react-resizer/",
   plugins: [react()],
 })
